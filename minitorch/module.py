@@ -51,7 +51,12 @@ class Module:
         """
         params = []
         for name, module in self._modules.items():
-            params.extend([(name + "." + subname, param) for subname, param in module.named_parameters()])
+            params.extend(
+                [
+                    (name + "." + subname, param)
+                    for subname, param in module.named_parameters()
+                ]
+            )
         for name, param in self._parameters.items():
             params.append((name, param))
         return params
